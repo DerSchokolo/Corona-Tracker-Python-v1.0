@@ -1,0 +1,29 @@
+{
+    "data": {
+        "BB": {
+            "id": 12,
+            "name": "Brandenburg",
+            "population": 2521893,
+            "cases": 108534,
+            "deaths": 3743,
+            "casesPerWeek": 334,
+            "deathsPerWeek": 0,
+            "recovered": 103320,
+            "abbreviation": "BB",
+            "weekIncidence": 13.2440194726739,
+            "casesPer100k": 4303.671884572422,
+            "delta": {
+                "cases": 24,
+                "deaths": 0,
+                "recovered": 92
+            }
+        }
+    },
+    "meta": {
+        "source": "Robert Koch-Institut",
+        "contact": "Marlon Lueckert (m.lueckert@me.com)",
+        "info": "https://github.com/marlon360/rki-covid-api",
+        "lastUpdate": "2021-06-05T23:00:00.000Z",
+        "lastCheckedForUpdate": "2021-06-06T09:33:51.282Z"
+    }
+}

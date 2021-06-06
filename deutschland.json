@@ -1,0 +1,24 @@
+{
+    "cases": 3700367,
+    "deaths": 89222,
+    "recovered": 3538047,
+    "weekIncidence": 24.71541768677133,
+    "casesPer100k": 4449.336706365603,
+    "casesPerWeek": 20555,
+    "delta": {
+        "cases": 2440,
+        "deaths": 74,
+        "recovered": 4152
+    },
+    "r": {
+        "value": 0.77,
+        "date": "2021-06-01T00:00:00.000Z"
+    },
+    "meta": {
+        "source": "Robert Koch-Institut",
+        "contact": "Marlon Lueckert (m.lueckert@me.com)",
+        "info": "https://github.com/marlon360/rki-covid-api",
+        "lastUpdate": "2021-06-05T23:00:00.000Z",
+        "lastCheckedForUpdate": "2021-06-06T09:23:18.164Z"
+    }
+}
