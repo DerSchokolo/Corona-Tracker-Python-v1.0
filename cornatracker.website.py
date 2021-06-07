@@ -93,6 +93,5 @@ def home():
 if __name__ == "__main__":
     app.run()
 
-
 #Formating
 #print(json.dumps(data_impfungen, indent=4))
