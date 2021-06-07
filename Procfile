@@ -1,1 +1,1 @@
-web: gunicorn app:coronatracker_website.py
+web: gunicorn app:coronatracker_website
