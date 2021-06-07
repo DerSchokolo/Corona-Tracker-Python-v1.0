@@ -1,0 +1,1 @@
+worker: python coronatracker_website.py
