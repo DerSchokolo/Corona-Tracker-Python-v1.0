@@ -1,9 +1,5 @@
 import json
 import requests
-from flask import Flask
-
-#Flask config
-app =  Flask(__name__)
 
 #Title
 print("")
@@ -97,39 +93,6 @@ print("")
 print("#########################################")
 print("#########################################")
 print("#########################################")
-
-
-#Website
-html = f"""
-
-<html>
-
-    <head>
-        <title>Corna Tracker v1.0</title>
-
-    </head>
-
-    <body bgcolor=d0dbb2>
-
-        <h1 style="font-family: sans-serif; font-size: 40; color: olivedrab;">Corona Tracker v1.0</h1> 
-        <hr>
-        <p style="font-family: sans-serif; font-size: 24; color: olive;">Incidence Oberhavel: {incidence_oberhavel}</p> 
-        <p style="font-family: sans-serif; font-size: 24; color: olive;">Incidence Brandenburg: {incidence_brandenburg}</p>
-        <p style="font-family: sans-serif; font-size: 24; color: olive;"> Incidence Deutschland: {incidence_deutschland}</p>
-
-    </body> 
-
-</html>"""
-
-@app.route("/")
-def home():
-    return html
-    
-
-
-
-if __name__ == "__main__":
-    app.run()
 
 
 #Formating
