@@ -1,5 +1,9 @@
 import json
 import requests
+from flask import Flask
+
+#Flask config
+app =  Flask(__name__)
 
 #Title
 print("")
@@ -23,7 +27,9 @@ data_oberhavel = resp_oberhavel.json()
 incidence_oberhavel = data_oberhavel["data"]["12065"]["weekIncidence"]
 
 print("Incidence Oberhavel:")
-print(round(incidence_oberhavel, 1))
+incidence_oberhavel = round(incidence_oberhavel, 1)
+print(incidence_oberhavel)
+incidence_oberhavel = str(incidence_oberhavel)
 
 
 #Break
@@ -40,7 +46,8 @@ data_brandenburg = resp_brandenburg.json()
 incidence_brandenburg = data_brandenburg["data"]["BB"]["weekIncidence"]
 
 print("Incidence Brandenburg:")
-print(round(incidence_brandenburg, 1))
+incidence_brandenburg = round(incidence_brandenburg, 1)
+print(incidence_brandenburg)
 
 
 
@@ -59,18 +66,19 @@ data_deutschland = resp_deutschland.json()
 incidence_deutschland = data_deutschland["weekIncidence"]
 
 print("Incidence Deutschland:")
-print(round(incidence_deutschland, 1))
+incidence_deutschland = round(incidence_deutschland, 1)
+print(incidence_deutschland)
 
 
 #Break
 print("")
 
 
-
-#Deutschland
+"""
+#Deutschland Impfungen
 url_impfungen = "https://api.corona-zahlen.org/vaccinations"
-resp_impungen = requests.get(url=url_impfungen)
-data_impfungen = resp_impungen.json()
+resp_impfungen = requests.get(url=url_impfungen)
+data_impfungen = resp_impfungen.json()
 
 incidence_impfungen = data_impfungen["data"]["vaccinated"]
 
@@ -81,7 +89,7 @@ incidence_impfungen = round(incidence_impfungen, 1)
 incidence_impfungen = str(incidence_impfungen)
 
 print(incidence_impfungen + "%")
-
+"""
 
 
 #End
@@ -89,6 +97,39 @@ print("")
 print("#########################################")
 print("#########################################")
 print("#########################################")
+
+
+#Website
+html = f"""
+
+<html>
+
+    <head>
+        <title>Corna Tracker v1.0</title>
+
+    </head>
+
+    <body bgcolor=d0dbb2>
+
+        <h1 style="font-family: sans-serif; font-size: 40; color: olivedrab;">Corona Tracker v1.0</h1> 
+        <hr>
+        <p style="font-family: sans-serif; font-size: 24; color: olive;">Incidence Oberhavel: {incidence_oberhavel}</p> 
+        <p style="font-family: sans-serif; font-size: 24; color: olive;">Incidence Brandenburg: {incidence_brandenburg}</p>
+        <p style="font-family: sans-serif; font-size: 24; color: olive;"> Incidence Deutschland: {incidence_deutschland}</p>
+
+    </body> 
+
+</html>"""
+
+@app.route("/")
+def home():
+    return html
+    
+
+
+
+if __name__ == "__main__":
+    app.run()
 
 
 #Formating
