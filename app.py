@@ -51,6 +51,16 @@ incidence_impfungen = incidence_impfungen * 100
 incidence_impfungen = round(incidence_impfungen, 1)
 
 
+#uhrzeit
+
+url_time = "http://worldtimeapi.org/api/timezone/Europe/Berlin"
+resp_time = requests.get(url=url_time)
+data_time = resp_time.json()
+
+data_time = data_time["datetime"]
+data_time = data_time[0:19]
+
+
 
 @app.route("/")
 def home():
@@ -58,7 +68,7 @@ def home():
 
 @app.route("/help")
 def info():
-    return render_template("help.html")
+    return render_template("help.html", data_time=data_time)
     
 
 
@@ -67,4 +77,4 @@ if __name__ == "__main__":
     app.run()
 
 #Formating
-#print(json.dumps(data_impfungen, indent=4))
+#print(json.dumps(data_time, indent=4))
