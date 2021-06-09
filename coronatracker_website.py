@@ -1,6 +1,6 @@
 import json
 import requests
-from flask import Flask
+from flask import Flask, url_for, request, render_template
 
 #Flask config
 app =  Flask(__name__)
@@ -15,8 +15,6 @@ incidence_oberhavel = data_oberhavel["data"]["12065"]["weekIncidence"]
 
 incidence_oberhavel = round(incidence_oberhavel, 1)
 
-incidence_oberhavel = str(incidence_oberhavel)
-
 
 
 #Brandenburg
@@ -25,7 +23,6 @@ resp_brandenburg = requests.get(url=url_brandenburg)
 data_brandenburg = resp_brandenburg.json()
 
 incidence_brandenburg = data_brandenburg["data"]["BB"]["weekIncidence"]
-
 
 incidence_brandenburg = round(incidence_brandenburg, 1)
 
@@ -42,7 +39,6 @@ incidence_deutschland = round(incidence_deutschland, 1)
 
 
 
-"""
 #Deutschland Impfungen
 url_impfungen = "https://api.corona-zahlen.org/vaccinations"
 resp_impfungen = requests.get(url=url_impfungen)
@@ -50,48 +46,25 @@ data_impfungen = resp_impfungen.json()
 
 incidence_impfungen = data_impfungen["data"]["vaccinated"]
 
-print("Anzahl aller 1. Geimpften in Deutschland:")
 incidence_impfungen = incidence_impfungen / 83020000
 incidence_impfungen = incidence_impfungen * 100
 incidence_impfungen = round(incidence_impfungen, 1)
-incidence_impfungen = str(incidence_impfungen)
-
-print(incidence_impfungen + "%")
-"""
 
 
-
-#Website
-html = f"""
-
-<html>
-
-    <head>
-        <title>Corna Tracker v1.0</title>
-
-    </head>
-
-    <body bgcolor=d0dbb2>
-
-        <h1 style="font-family: sans-serif; font-size: 40; color: olivedrab;">Corona Tracker v1.0</h1> 
-        <hr>
-        <p style="font-family: sans-serif; font-size: 24; color: olive;">Incidence Oberhavel: {incidence_oberhavel}</p> 
-        <p style="font-family: sans-serif; font-size: 24; color: olive;">Incidence Brandenburg: {incidence_brandenburg}</p>
-        <p style="font-family: sans-serif; font-size: 24; color: olive;"> Incidence Deutschland: {incidence_deutschland}</p>
-
-    </body> 
-
-</html>"""
 
 @app.route("/")
 def home():
-    return html
+    return render_template("index.html", incidence_oberhavel=incidence_oberhavel, incidence_brandenburg=incidence_brandenburg, incidence_deutschland=incidence_deutschland, incidence_impfungen=incidence_impfungen)
+
+@app.route("/help")
+def info():
+    return render_template("help.html")
     
 
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run()
 
 #Formating
 #print(json.dumps(data_impfungen, indent=4))
