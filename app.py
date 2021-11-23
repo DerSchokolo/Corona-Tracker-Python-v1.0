@@ -25,6 +25,15 @@ incidence_brandenburg = data_brandenburg["data"]["BB"]["weekIncidence"]
 
 incidence_brandenburg = round(incidence_brandenburg, 1)
 
+# Berlin
+url_berlin = "https://api.corona-zahlen.org/states/BE"
+resp_berlin = requests.get(url=url_berlin)
+data_berlin = resp_berlin.json()
+
+incidence_berlin = data_berlin["data"]["BE"]["weekIncidence"]
+
+incidence_berlin = round(incidence_berlin, 1)
+
 
 # Deutschland
 url_deutschland = "https://api.corona-zahlen.org/germany"
