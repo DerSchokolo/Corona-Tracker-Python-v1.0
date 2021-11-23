@@ -73,6 +73,17 @@ print(incidence_deutschland)
 #Break
 print("")
 
+# Berlin
+url_berlin = "https://api.corona-zahlen.org/states/BE"
+resp_berlin = requests.get(url=url_berlin)
+data_berlin = resp_berlin.json()
+
+incidence_berlin = data_berlin["data"]["BE"]["weekIncidence"]
+
+print("Incidence Berlin:")
+incidence_berlin = round(incidence_berlin, 1)
+print(incidence_berlin)
+
 
 """
 #Deutschland Impfungen

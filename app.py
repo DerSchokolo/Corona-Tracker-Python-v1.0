@@ -25,6 +25,7 @@ incidence_brandenburg = data_brandenburg["data"]["BB"]["weekIncidence"]
 
 incidence_brandenburg = round(incidence_brandenburg, 1)
 
+
 # Berlin
 url_berlin = "https://api.corona-zahlen.org/states/BE"
 resp_berlin = requests.get(url=url_berlin)
@@ -81,7 +82,7 @@ data_time = data_time[0:19]
 # Main Website
 @app.route("/")
 def home():
-    return render_template("index.html", incidence_oberhavel=incidence_oberhavel, incidence_brandenburg=incidence_brandenburg, incidence_deutschland=incidence_deutschland, impfungen_erst=impfungen_erst, impfungen_zweit=impfungen_zweit)
+    return render_template("index.html", incidence_oberhavel=incidence_oberhavel, incidence_brandenburg=incidence_brandenburg,incidence_berlin=incidence_berlin, incidence_deutschland=incidence_deutschland, impfungen_erst=impfungen_erst, impfungen_zweit=impfungen_zweit)
 
 
 # Help Website
