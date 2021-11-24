@@ -24,7 +24,12 @@ url_oberhavel = "https://api.corona-zahlen.org/districts"
 resp_oberhavel = requests.get(url=url_oberhavel)
 data_oberhavel = resp_oberhavel.json()
 
-incidence_oberhavel = data_oberhavel["data"]["12065"]["weekIncidence"]
+try: 
+    incidence_oberhavel = data_oberhavel["data"]["12065"]["weekIncidence"]
+
+except KeyError:
+    print("API Error")
+
 
 print("Incidence Oberhavel:")
 incidence_oberhavel = round(incidence_oberhavel, 1)

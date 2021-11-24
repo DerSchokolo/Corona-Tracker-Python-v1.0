@@ -11,9 +11,12 @@ url_oberhavel = "https://api.corona-zahlen.org/districts"
 resp_oberhavel = requests.get(url=url_oberhavel)
 data_oberhavel = resp_oberhavel.json()
 
-incidence_oberhavel = data_oberhavel["data"]["12065"]["weekIncidence"]
+try:
+    incidence_oberhavel = data_oberhavel["data"]["12065"]["weekIncidence"]
+    incidence_oberhavel = round(incidence_oberhavel, 1)
 
-incidence_oberhavel = round(incidence_oberhavel, 1)
+except KeyError:
+    incidence_oberhavel = "API Error"
 
 
 # Brandenburg
@@ -21,9 +24,12 @@ url_brandenburg = "https://api.corona-zahlen.org/states/BB"
 resp_brandenburg = requests.get(url=url_brandenburg)
 data_brandenburg = resp_brandenburg.json()
 
-incidence_brandenburg = data_brandenburg["data"]["BB"]["weekIncidence"]
+try:
+    incidence_brandenburg = data_brandenburg["data"]["BB"]["weekIncidence"]
+    incidence_brandenburg = round(incidence_brandenburg, 1)
 
-incidence_brandenburg = round(incidence_brandenburg, 1)
+except KeyError:
+    incidence_brandenburg = "API Error"
 
 
 # Berlin
@@ -31,9 +37,12 @@ url_berlin = "https://api.corona-zahlen.org/states/BE"
 resp_berlin = requests.get(url=url_berlin)
 data_berlin = resp_berlin.json()
 
-incidence_berlin = data_berlin["data"]["BE"]["weekIncidence"]
+try:
+    incidence_berlin = data_berlin["data"]["BE"]["weekIncidence"]
+    incidence_berlin = round(incidence_berlin, 1)
 
-incidence_berlin = round(incidence_berlin, 1)
+except KeyError:
+    incidence_berlin = "API Error"
 
 
 # Deutschland
@@ -41,9 +50,12 @@ url_deutschland = "https://api.corona-zahlen.org/germany"
 resp_deutschland = requests.get(url=url_deutschland)
 data_deutschland = resp_deutschland.json()
 
-incidence_deutschland = data_deutschland["weekIncidence"]
+try:
+    incidence_deutschland = data_deutschland["weekIncidence"]
+    incidence_deutschland = round(incidence_deutschland, 1)
 
-incidence_deutschland = round(incidence_deutschland, 1)
+except KeyError:
+    incidence_deutschland = "API Error"
 
 
 # Deutschland Erste Impfungen
@@ -51,11 +63,14 @@ url_impfungen_erst = "https://api.corona-zahlen.org/vaccinations"
 resp_impfungen_erst = requests.get(url=url_impfungen_erst)
 data_impfungen_erst = resp_impfungen_erst.json()
 
-impfungen_erst = data_impfungen_erst["data"]["vaccinated"]
+try:
+    impfungen_erst = data_impfungen_erst["data"]["vaccinated"]
+    impfungen_erst = impfungen_erst / 83020000
+    impfungen_erst = impfungen_erst * 100
+    impfungen_erst = round(impfungen_erst, 1)
 
-impfungen_erst = impfungen_erst / 83020000
-impfungen_erst = impfungen_erst * 100
-impfungen_erst = round(impfungen_erst, 1)
+except KeyError:
+    impfungen_erst = "API Error"
 
 
 # Deutschland Zweite Impfungen
@@ -63,11 +78,14 @@ url_impfungen_zweit = "https://api.corona-zahlen.org/vaccinations"
 resp_impfungen_zweit = requests.get(url=url_impfungen_zweit)
 data_impfungen_zweit = resp_impfungen_zweit.json()
 
-impfungen_zweit = data_impfungen_zweit["data"]["secondVaccination"]["vaccinated"]
+try:
+    impfungen_zweit = data_impfungen_zweit["data"]["secondVaccination"]["vaccinated"]
+    impfungen_zweit = impfungen_zweit / 83020000
+    impfungen_zweit = impfungen_zweit * 100
+    impfungen_zweit = round(impfungen_zweit, 1)
 
-impfungen_zweit = impfungen_zweit / 83020000
-impfungen_zweit = impfungen_zweit * 100
-impfungen_zweit = round(impfungen_zweit, 1)
+except KeyError:
+    impfungen_zweit = "API Error"
 
 
 # Uhrzeit
