@@ -97,6 +97,13 @@ data_time = data_time["datetime"]
 data_time = data_time[0:19]
 
 
+
+print("Oberhavel: " + incidence_oberhavel)
+print("Brandenburg: " + incidence_brandenburg)
+print("Berlin: " + incidence_berlin)
+print("Deutschland: " + incidence_deutschland)
+
+
 # Main Website
 @app.route("/")
 def home():
